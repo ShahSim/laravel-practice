@@ -36,5 +36,5 @@
 @endsection
 
 @section('js')
-    <script type="module" src="{{asset('js/project/addEmployee.js')}}"></script>
+    <script type="module" src="{{asset('public/js/project/addEmployee.js')}}"></script>
 @endsection

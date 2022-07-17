@@ -2,7 +2,7 @@ import * as shf from "../inc/someHandyFunctions.js";
 import * as asnc from "../inc/assync.js";
 
 $(document).ready(function () {
-    $('title').html('Demo2 Page');
+    // $('title').html('Demo2 Page');
     $('#demo2Link').addClass('active');
     $('#demo').html('Demo 2 jquery');
 

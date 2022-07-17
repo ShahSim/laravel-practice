@@ -32,5 +32,5 @@
 <script>
     getEmployees = '{{url('getEmployees')}}';
 </script>
-<script type="module" src="{{asset('js/project/employees.js')}}"></script>
+<script type="module" src="{{asset('public/js/project/employees.js')}}"></script>
 @endsection

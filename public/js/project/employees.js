@@ -2,7 +2,7 @@ import * as shf from "../inc/someHandyFunctions.js";
 import * as asnc from "../inc/assync.js";
 
 $(document).ready(function () {
-    $('title').html('Employees Page');
+    // $('title').html('Employees Page');
     $('#employeesLink').addClass('active');
 
     asnc.assyncGet(getEmployees,gotEmployee)

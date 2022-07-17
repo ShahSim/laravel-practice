@@ -6,5 +6,5 @@
 @endsection
 
 @section('js')
-<script type="module" src="{{asset('js/project/demo2.js')}}"></script>
+<script type="module" src="{{asset('public/js/project/demo2.js')}}"></script>
 @endsection
