@@ -1,4 +1,8 @@
-@extends('layout.frontend')
+@extends('layouts.frontend')
+
+@section('title')
+    Employees
+@endsection
 
 @section('content')
     <div class="d-flex justify-content-end mt-5">

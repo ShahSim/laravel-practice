@@ -18,57 +18,48 @@ export function assyncGet(URL, callback = null) {
 
 //Default submit error
 function dafaultSubmitError(data) {
-    swal('Input Error','',"error");;
-    console.log(data);
-
-    $.each(data, function (key, val) {
-        if (val!='') {
-            $(key).html(val);
-        } else {
-            $(key).html('');
-        }
-    });
+    data.responseJSON ? alert(data.responseJSON.message) : alert('Assync submit error');
+    // $.each(data, function (key, val) {
+    //     if (val!='') {
+    //         $(key).html(val);
+    //     } else {
+    //         $(key).html('');
+    //     }
+    // });
  }
 ///////////
 //Default submit success
-function dafaultSubmitSuccess() {
-    alert("Success");
-    window.location.reload();
+function dafaultSubmitSuccess(data) {
+    data.message ? alert(data.message) : alert("Success");
+    data.redirect ? location.href=data.redirect : location.reload();
 }
 ///////////
 
 //Submitting to table with AJAX
-export function assyncSubmit(URL, formData, btnId = null, callBackSuccess = null, callBackError = null) {
+export function assyncSubmit(targetId,  callBackSuccess = null, callBackError = null) {
+
     $.ajax({
-        type: "POST",
-        url: URL,
-        data: formData,
+        type: $('#'+targetId).attr('method'),
+        url: $('#'+targetId).attr('action'),
+        data:  new FormData(document.getElementById(targetId)),
         processData: false,
         contentType: false,
-        dataType: "json",
+        dataType: "JSON",
         beforeSend: ()=>{
-            btnId ? $('#'+btnId).attr('disabled', 'disabled') : null;
+            $('#'+targetId+' button[type="submit"]').attr('disabled', true);
         },
 
         success: (data)=>{
-
-            if (data.error){
-                callBackError ? callBackError(data) : dafaultSubmitError(data);
-            }
-
-            else if (data.success) {
-                $('div.input-error').html('');
-                callBackSuccess ? callBackSuccess(data) : dafaultSubmitSuccess();
-            }
-
-            btnId ?  $('#'+btnId).attr('disabled', false) : null;
-
+            callBackSuccess ? callBackSuccess(data) : dafaultSubmitSuccess(data);
+            $('#'+targetId+' button[type="submit"]').attr('disabled', false);
         },
 
         error: (jqXHR, exception)=>{
-            alert('Assync Submit Error');
+            callBackError ? callBackError(jqXHR) : dafaultSubmitError(jqXHR);
+            $('#'+targetId+' button[type="submit"]').attr('disabled', false);
         }
 
     });
+    //////////////////
 
 }

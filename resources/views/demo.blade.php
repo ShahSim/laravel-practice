@@ -1,4 +1,8 @@
-@extends('layout.frontend')
+@extends('layouts.frontend')
+
+@section('title')
+    Demo Page
+@endsection
 
 @section('content')
 <h1>This is demo</h1>

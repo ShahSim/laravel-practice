@@ -1,5 +1,8 @@
-@extends('layout.frontend')
-<?php $title='Demo2 Page';?>
+@extends('layouts.frontend')
+@section('title')
+    Demo2 Page
+@endsection
+
 @section('content')
 <h1>This is demo2</h1>
     <p id="demo">We are in demo2</p>

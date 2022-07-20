@@ -9,13 +9,30 @@ class DemoController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+
     }
 
     public function test()
     {
-        $ext = 'sdasd';
-        echo url('/demo2/{$ext}');
+        $count=1;
+        $add = [1,2,3,4,5,6,7,8];
+        $addIndex=0;
+        $ext = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+        foreach ($ext as $key => $value) {
+          if ($count==3 and $addIndex<sizeof($add)) {
+            echo $value.' '.$add[$addIndex].' ';
+            $addIndex++;
+          }
+          else {
+            echo $value.' ';
+          }
+
+          $count++;
+          $count>3 ? $count=1 : null;
+
+        }
+        //djd(sizeof($ext));
     }
 
     public function demo()
